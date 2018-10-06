@@ -4,4 +4,5 @@ export default Colors = {
   test: 'orange',
   softWhite: '#FED',
   black: '#000',
+  buttonColor: '#2e405e'
 };

@@ -12,7 +12,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <View  style={styles.homeBackground}>
-        <Contact/>
+        <Contact name="Andrew Jones" email="argentaegis@gmail.com"/>
+        <Contact name="Superman" email="ckent@dailyplanet.com"/>
       </View>
     );
   }
