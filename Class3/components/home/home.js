@@ -11,6 +11,10 @@ export default class Home extends React.Component {
     super(props);
   }
 
+  static navigationOptions = {
+    header: null,
+  };
+
   render() {
     return (
       <View  style={styles.homeBackground}>

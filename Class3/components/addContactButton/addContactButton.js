@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Button, View } from 'react-native';
 import Colors from '../../constants/colors';
+import { withNavigation } from 'react-navigation';
 
-export default class AddContactButton extends React.Component {
+class AddContactButton extends React.Component {
 
   constructor(props) {
     super(props);
@@ -10,6 +11,7 @@ export default class AddContactButton extends React.Component {
 
   buttonPressed() {
     console.log('Add Contact Pressed');
+    this.props.navigation.navigate('AddContact');
   }
 
   render() {
@@ -27,3 +29,6 @@ export default class AddContactButton extends React.Component {
 
 const styles = StyleSheet.create({
 });
+
+
+export default withNavigation(AddContactButton);
