@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import Colors from '../../constants/colors';
 
 export default class AddContact extends React.Component {
@@ -14,7 +14,7 @@ export default class AddContact extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.background}>
         <Text>AddContact Working</Text>
       </View>
     );
@@ -22,4 +22,8 @@ export default class AddContact extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  background: {
+    height: Dimensions.get('window').height,
+    backgroundColor: Colors.steelBlue,
+  },
 });

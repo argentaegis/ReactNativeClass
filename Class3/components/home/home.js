@@ -17,7 +17,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <View  style={styles.homeBackground}>
+      <View  style={styles.background}>
         <AddContactButton/>
         <ContactList/>
       </View>
@@ -26,7 +26,7 @@ export default class Home extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  homeBackground: {
+  background: {
     height: Dimensions.get('window').height,
     backgroundColor: Colors.steelBlue,
   },
