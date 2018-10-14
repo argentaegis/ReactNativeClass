@@ -3,6 +3,7 @@ import { StyleSheet, View, Dimensions } from 'react-native';
 import Contact from '../contact/contact';
 import Colors from '../../constants/colors';
 import ContactList from "../contactList/contactList";
+import AddContactButton from '../addContactButton/addContactButton';
 
 export default class Home extends React.Component {
 
@@ -13,6 +14,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <View  style={styles.homeBackground}>
+        <AddContactButton/>
         <ContactList/>
       </View>
     );
