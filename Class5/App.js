@@ -4,13 +4,13 @@ import { createStackNavigator } from 'react-navigation';
 
 import Home from './components/home/home';
 import AddContact from "./components/addContact/addContact";
-import Camera from './components/camera/camera';
+import CameraScreen from './components/cameraScreen/cameraScreen';
 
 const RootStack = createStackNavigator(
   {
     Home: { screen: Home },
     AddContact: { screen: AddContact },
-    Camera: { screen: Camera },
+    CameraScreen: { screen: CameraScreen },
   },
   {
     initialRoute: 'Home'

@@ -1,17 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Button, View } from 'react-native';
 import Colors from '../../constants/colors';
-import {withNavigation} from "react-navigation";
+import { withNavigation } from 'react-navigation';
 
-class PhotoButton extends React.Component {
+class AddContactButton extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
   buttonPressed() {
-    console.log('Button Pressed');
-    this.props.navigation.navigate('Camera');
+    console.log('Add Contact Pressed');
+    this.props.navigation.navigate('AddContact');
   }
 
   render() {
@@ -19,7 +19,7 @@ class PhotoButton extends React.Component {
       <View>
         <Button
           onPress={this.buttonPressed.bind(this)}
-          title="Photo"
+          title="Add Contact"
           color={Colors.buttonColor}
         />
       </View>
@@ -29,5 +29,6 @@ class PhotoButton extends React.Component {
 
 const styles = StyleSheet.create({
 });
+
 
 export default withNavigation(AddContactButton);

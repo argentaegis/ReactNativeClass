@@ -11,7 +11,7 @@ class PhotoButton extends React.Component {
 
   buttonPressed() {
     console.log('Button Pressed');
-    this.props.navigation.navigate('Camera');
+    this.props.navigation.navigate('CameraScreen');
   }
 
   render() {
@@ -30,4 +30,4 @@ class PhotoButton extends React.Component {
 const styles = StyleSheet.create({
 });
 
-export default withNavigation(AddContactButton);
+export default withNavigation(PhotoButton);
