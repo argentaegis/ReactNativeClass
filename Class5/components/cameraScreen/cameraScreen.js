@@ -22,18 +22,10 @@ export default class CameraScreen extends React.Component {
           type={RNCamera.Constants.Type.back}
           flashMode={RNCamera.Constants.FlashMode.on}
           permissionDialogTitle={'Permission to use camera'}
-          permissionDialogMessage={'We need your permission to use your camera'}
+          permissionDialogMessage={'We need your permission to use your camera phone'}
           height={Dimensions.get('window').height}
         >
           {({ camera, status }) => {
-            if (status !== 'READY'){
-              console.log('NOT READY');
-              return;
-            }
-            else{
-              console.log('READY');
-            }
-
             return (
               <View style={styles.cameraView}>
                 <TouchableOpacity
