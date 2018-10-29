@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import Colors from '../../constants/colors';
-import {withNavigation} from "react-navigation";
 
-class PhotoButton extends React.Component {
+export default class PhotoButton extends React.Component {
 
   constructor(props) {
     super(props);
@@ -11,7 +10,6 @@ class PhotoButton extends React.Component {
 
   buttonPressed() {
     console.log('Button Pressed');
-    this.props.navigation.navigate('Camera');
   }
 
   render() {
@@ -29,5 +27,3 @@ class PhotoButton extends React.Component {
 
 const styles = StyleSheet.create({
 });
-
-export default withNavigation(AddContactButton);
