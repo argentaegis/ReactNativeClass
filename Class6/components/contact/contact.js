@@ -20,7 +20,7 @@ export default class Contact extends React.Component {
           </Text>
         </View>
         <View style={styles.photoButton}>
-          <PhotoButton/>
+          <PhotoButton email={this.props.email}/>
         </View>
       </View>
     );

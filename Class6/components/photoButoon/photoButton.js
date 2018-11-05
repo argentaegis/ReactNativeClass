@@ -11,7 +11,7 @@ class PhotoButton extends React.Component {
 
   buttonPressed() {
     console.log('Button Pressed');
-    this.props.navigation.navigate('CameraScreen');
+    this.props.navigation.navigate('CameraScreen', {email: this.props.email});
   }
 
   render() {

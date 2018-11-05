@@ -62,14 +62,12 @@ export default class CameraScreen extends React.Component {
     PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
       {
-        'title': 'Cool Photo App Camera Permission',
-        'message': 'Cool Photo App needs access to your camera ' +
-        'so you can take awesome pictures.'
+        'title': 'App Storage Permission',
+        'message': 'App needs access storage',
       }).then(() => {
       RNFS.writeFile(path, photoData.base64, 'base64')
         .then((success) => {
           console.log('FILE WRITTEN!');
-          console.log(success);
           this.sendEmail(path)
         })
         .catch((err) => {
@@ -79,20 +77,20 @@ export default class CameraScreen extends React.Component {
   }
 
   sendEmail(photoLocation) {
-    const to = ['argentaegis@gmail.com']
-    //photoURI = photoURI.substring('file://'.length, photoURI.length);
+    console.log(this.props.navigation.state.params.email);
+    const to = [this.props.navigation.state.params.email]
     console.log(photoLocation);
     Mailer.mail({
-      subject: 'Photo from Andrew',
-      recipients: ['argentaegis@gmail.com'],
+      subject: 'Photo from React Native Class',
+      recipients: to,
       ccRecipients: [],
       bccRecipients: [],
       body: '<b>Hello</b>',
       isHTML: true,
       attachment: {
-        path: photoLocation,  // The absolute path of the file from which to read data.
-        type: 'jpg',   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
-        name: '',   // Optional: Custom filename for attachment
+        path: photoLocation,
+        type: 'jpg',
+        name: '',
       }
     }, (error) => {
       console.log(error);
