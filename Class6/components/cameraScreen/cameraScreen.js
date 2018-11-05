@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Dimensions, Alert} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Dimensions, PermissionsAndroid } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import Mailer from 'react-native-mail';
+var RNFS = require('react-native-fs');
 import Colors from '../../constants/colors';
 
 
@@ -48,14 +49,39 @@ export default class CameraScreen extends React.Component {
     const options = { quality: 0.5, base64: true };
     const data = await camera.takePictureAsync(options);
     //  eslint-disable-next-line
-    console.log(data.uri);
-    this.sendEmail(data.uri);
+    console.log(data);
+
+    this.saveFileToStorage(data);
+  };
+
+  saveFileToStorage(photoData) {
+
+    const path = RNFS.ExternalStorageDirectoryPath + '/myPhoto.jpg';
+    console.log(path);
+
+    PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+      {
+        'title': 'Cool Photo App Camera Permission',
+        'message': 'Cool Photo App needs access to your camera ' +
+        'so you can take awesome pictures.'
+      }).then(() => {
+      RNFS.writeFile(path, photoData.base64, 'base64')
+        .then((success) => {
+          console.log('FILE WRITTEN!');
+          console.log(success);
+          this.sendEmail(path)
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    })
   }
 
-  sendEmail(photoURI) {
+  sendEmail(photoLocation) {
     const to = ['argentaegis@gmail.com']
-    //photoURI = photoURI.substring('file:///'.length, photoURI.length);
-    console.log(photoURI);
+    //photoURI = photoURI.substring('file://'.length, photoURI.length);
+    console.log(photoLocation);
     Mailer.mail({
       subject: 'Photo from Andrew',
       recipients: ['argentaegis@gmail.com'],
@@ -64,7 +90,7 @@ export default class CameraScreen extends React.Component {
       body: '<b>Hello</b>',
       isHTML: true,
       attachment: {
-        path: photoURI,  // The absolute path of the file from which to read data.
+        path: photoLocation,  // The absolute path of the file from which to read data.
         type: 'jpg',   // Mime Type: jpg, png, doc, ppt, html, pdf, csv
         name: '',   // Optional: Custom filename for attachment
       }
